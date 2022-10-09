@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "a6c3f988-3fb6-4123-8f46-6655ae6c3f7f",
+		"name": "UP Skills1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "Get accessToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const datava= pm.response.json();\r",
+							"console.log(datava);\r",
+							"pm.environment.set(\"token1\", datava.data.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic c2hvcHBpbmdfb2F1dGhfY2xpZW50OnNob3BwaW5nX29hdXRoX3NlY3JldA==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://rest-api.upskills.in/api/rest/oauth2/token/client_credentials",
+					"protocol": "http",
+					"host": [
+						"rest-api",
+						"upskills",
+						"in"
+					],
+					"path": [
+						"api",
+						"rest",
+						"oauth2",
+						"token",
+						"client_credentials"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"srinathsr\",\r\n  \"lastname\": \"User1\",\r\n  \"email\": \"srin@gmail.com\",\r\n  \"password\": \"pass123\",\r\n  \"confirm\": \"pass123\",\r\n  \"telephone\": \"1-541-754-3010\",\r\n  \"customer_group_id\": \"1\",\r\n  \"agree\": \"1\",\r\n  \"custom_field\": {\r\n    \"account\": {\r\n      \"1\": \"+364545454\"\r\n    }\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rest-api.upskills.in/api/rest/register",
+					"protocol": "http",
+					"host": [
+						"rest-api",
+						"upskills",
+						"in"
+					],
+					"path": [
+						"api",
+						"rest",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgotten Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"srin@gmail.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rest-api.upskills.in/api/rest/forgotten",
+					"protocol": "http",
+					"host": [
+						"rest-api",
+						"upskills",
+						"in"
+					],
+					"path": [
+						"api",
+						"rest",
+						"forgotten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"email\": \"srin@gmail.com\",\r\n     \"password\": \"pass123\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rest-api.upskills.in/api/rest/login",
+					"protocol": "http",
+					"host": [
+						"rest-api",
+						"upskills",
+						"in"
+					],
+					"path": [
+						"api",
+						"rest",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://rest-api.upskills.in/api/rest/account",
+					"protocol": "http",
+					"host": [
+						"rest-api",
+						"upskills",
+						"in"
+					],
+					"path": [
+						"api",
+						"rest",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"Demos\",\r\n  \"lastname\": \"Users\",\r\n  \"email\": \"srs@vipmail.hu\",\r\n  \"telephone\": \"1-541-754-3010\",\r\n  \"custom_field\": {\r\n    \"account\": {\r\n      \"1\": \"+364545454\"\r\n    }\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rest-api.upskills.in/api/rest/account",
+					"protocol": "http",
+					"host": [
+						"rest-api",
+						"upskills",
+						"in"
+					],
+					"path": [
+						"api",
+						"rest",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://rest-api.upskills.in/api/rest/logout",
+					"protocol": "http",
+					"host": [
+						"rest-api",
+						"upskills",
+						"in"
+					],
+					"path": [
+						"api",
+						"rest",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

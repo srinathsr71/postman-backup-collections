@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "d2cfb0fb-df74-4344-b23b-232e44336038",
+		"name": "Image Formate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "Get Jpeg Image formate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://httpbin.org/image/jpeg",
+					"protocol": "http",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"image",
+						"jpeg"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

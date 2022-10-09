@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "2af70ac7-b470-47de-9f6f-c0b4f92bfe08",
+		"name": "demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "Get airlines",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const value=pm.response.json();\r",
+							"var lenvalue=value.length;\r",
+							"console.log(lenvalue);\r",
+							"for(var i=0;i<lenvalue;i++)\r",
+							"{\r",
+							"    //data=value[i];\r",
+							"    //console.log(data);\r",
+							"    if(value[i].country == \"Austrailia\")\r",
+							"    {\r",
+							"        //console.log(data.country);\r",
+							"        var aid=value[i].id;\r",
+							"        //console.log(aid);\r",
+							"        pm.environment.set(\"airid\", aid);\r",
+							"    }\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.instantwebtools.net/v1/airlines",
+					"protocol": "https",
+					"host": [
+						"api",
+						"instantwebtools",
+						"net"
+					],
+					"path": [
+						"v1",
+						"airlines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a airlines",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 22221111,\r\n    \"name\": \"west indies Airways\",\r\n    \"country\": \"west indies\",\r\n    \"logo\":\"https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Qatar_Airways_Logo.svg/westindies.png\",\r\n    \"slogan\": \"From westindies\",\r\n    \"head_quaters\": \"Katunayake, Sri Lanka\",\r\n    \"website\": \"www.westindiesairways.com\",\r\n    \"established\": \"1990\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.instantwebtools.net/v1/airlines",
+					"protocol": "https",
+					"host": [
+						"api",
+						"instantwebtools",
+						"net"
+					],
+					"path": [
+						"v1",
+						"airlines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get airline by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.instantwebtools.net/v1/airlines/1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"instantwebtools",
+						"net"
+					],
+					"path": [
+						"v1",
+						"airlines",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create passenger",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John\",\r\n    \"trips\": 250,\r\n    \"airline\": 5 \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.instantwebtools.net/v1/passenger",
+					"protocol": "https",
+					"host": [
+						"api",
+						"instantwebtools",
+						"net"
+					],
+					"path": [
+						"v1",
+						"passenger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

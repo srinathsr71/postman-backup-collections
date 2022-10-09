@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "beb41505-eb86-4ef1-a1a0-efea063fb2bb",
+		"name": "Jira Boards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "Create a Board",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "lrZ2ga5qF54rvYmaAlRNB5E1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "srsrinath97@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n  \"name\": \"scrum board\",\r\n  \"type\":\"kanban\",\r\n   \"filterId\":10002,\r\n   \"location\":{\r\n       \"projectId\":1002\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://srinath2345.atlassian.net/rest/agile/1.0/board",
+					"protocol": "https",
+					"host": [
+						"srinath2345",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"agile",
+						"1.0",
+						"board"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Boards",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "bm5cfJXJGjwxnvIQCrMAECA5",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "srsrinath97@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://srinath2345.atlassian.net/rest/agile/1.0/board",
+					"protocol": "https",
+					"host": [
+						"srinath2345",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"agile",
+						"1.0",
+						"board"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Board",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "lrZ2ga5qF54rvYmaAlRNB5E1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "srsrinath97@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://srinath2345.atlassian.net/rest/agile/1.0/board/3",
+					"protocol": "https",
+					"host": [
+						"srinath2345",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"agile",
+						"1.0",
+						"board",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

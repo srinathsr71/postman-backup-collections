@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "3b492934-e07c-421b-a929-9d1080ca4ac0",
+		"name": "OrderPizzaAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "Orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const datavalue=pm.response.json();\r",
+							"//console.log(datavalue);\r",
+							"var len=datavalue.length;\r",
+							"console.log(len);\r",
+							"for(var i=0;i<len;i++)\r",
+							"{\r",
+							"    //console.log(i);\r",
+							"    const test=datavalue[i];\r",
+							"    //console.log(test);\r",
+							"     if(test.Flavor == \"CHICKEN-FAJITA\")\r",
+							"     {\r",
+							"      //console.log(test.Flavor);\r",
+							"        var orderid=datavalue[i].Order_ID;\r",
+							"         console.log(orderid);\r",
+							"         pm.environment.set(\"oid\", orderid);\r",
+							"     }\r",
+							"\r",
+							"}\r",
+							"\r",
+							"\r",
+							"   //  var test=datavalue.len[i].Flavor == \"cheese\";\r",
+							"    // console.log(test);\r",
+							"    // if(datavalue.len[i].Flavor ==\"cheese\")\r",
+							"    // {\r",
+							"    //     console.log(Flavor);\r",
+							"    // }\r",
+							"    // if()\r",
+							"    // {\r",
+							"    //     console.log(len.Flavor);\r",
+							"    //     // var orderid=datavalue.Order_ID;\r",
+							"    //     // console.log(orderid);\r",
+							"    //     // pm.environment.set(\"oid\", orderid);\r",
+							"    // }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "{{url}}/api/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/orders/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"orders",
+						"1"
+					]
+				},
+				"description": "{{url}}/api/orders/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const res=pm.response.json();\r",
+							"pm.environment.set(\"Token\", res.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"test\",\n\t\"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth"
+					]
+				},
+				"description": "{{url}}/api/auth"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Crust\": \"soft\",\n\t\"Flavor\": \"paneer\",\n\t\"Size\": \"S\",\n\t\"Table_No\": 11,\n    \"price\": 120\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "{{url}}/api/orders"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": ""
+		},
+		{
+			"key": "url",
+			"value": "",
+			"disabled": true
+		}
+	]
+}

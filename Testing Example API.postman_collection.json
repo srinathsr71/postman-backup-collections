@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "1c792cad-11f4-41c3-8550-d1422a53f576",
+		"name": "Testing Example API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "Activites",
+			"item": [
+				{
+					"name": "Get all activities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/Activities",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"Activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a activity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"i went a mark\",\r\n  \"dueDate\": \"2022-09-10T07:05:22.108Z\",\r\n  \"completed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/Activities",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"Activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get activity by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/Activities/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"Activities",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPdate activity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"id\":1,\r\n    \"title\": \"Act 356\",\r\n    \"dueDate\": \"2022-09-10T08:15:29.7071521+00:00\",\r\n    \"completed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/Activities/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"Activities",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

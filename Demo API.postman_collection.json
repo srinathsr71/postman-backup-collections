@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "4e74979d-79c1-4ec4-a21f-e9dd4e71ec6f",
+		"name": "Demo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "Sign UP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var res=pm.response.json();\r",
+							"pm.environment.set(\"regaccesstoken\", res.user.authtoken);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\": {\"first_name\": \"Iyan\", \"last_name\": \"\", \"email\": \"srou{{$randomInt}}@gmail.com\", \"password\": \"indiannna.@34\",\r\n\"phone_number\":\"+91-9876586269\",\"user-type\":\"user\",\"organisation\":\"org1\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var data=pm.response.json();\r",
+							"pm.environment.set(\"loginaccesstoken\", data.user.authtoken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sryy@gmail.com\",\r\n    \"password\": \"indiannna.@34\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/sign_in",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

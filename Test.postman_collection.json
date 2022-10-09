@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "dfe8f3a3-8235-489c-b6e5-d38719584ac8",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\t\"username\":\"test\",\r\n\t\t\t\"password\":\"test\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://order-pizza-api.herokuapp.com/api/auth",
+					"protocol": "https",
+					"host": [
+						"order-pizza-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

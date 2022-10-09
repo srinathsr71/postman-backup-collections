@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "142e0e95-19df-4cc9-b948-ab6eabb77c17",
+		"name": "simple book api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "List of books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const datavalues=pm.response.json();\r",
+							"//console.log(datavalue);\r",
+							"var dlen=datavalues.length;\r",
+							"console.log(dlen);\r",
+							"// for(var i=0;i<len;i++)\r",
+							"// {\r",
+							"//     //console.log(i);\r",
+							"//     test=datavalue[i];\r",
+							"//     //console.log(test);\r",
+							"//     if(test.Flavor == \"CHICKEN-FAJITA\")\r",
+							"//     {\r",
+							"//         console.log(test.Flavor);\r",
+							"//         var orderid=datavalue[i].Order_ID;\r",
+							"//         console.log(orderid);\r",
+							"//         pm.environment.set(\"oid\", orderid);\r",
+							"//     }\r",
+							"\r",
+							"// }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/books",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/status",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a single book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/books/2",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"books",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const res=pm.response.json();\r",
+							"pm.environment.set(\"accesstoken\",res.accessToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Hakad\",\r\n   \"clientEmail\": \"sips34@msn.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api-clients/",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api-clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const datavalues=pm.response.json();\r",
+							"//console.log(datavalue);\r",
+							"var dalen=datavalues.length;\r",
+							"console.log(dalen);\r",
+							"for(var i=0;i<dalen;i++)\r",
+							"{\r",
+							"    //console.log(i);\r",
+							"    tests=datavalues[i];\r",
+							"    //console.log(tests);\r",
+							"     if(tests.customerName == \"sainath\")\r",
+							"     {\r",
+							"         console.log(tests.customerName);\r",
+							"         var orderid=datavalues[i].id;\r",
+							"         console.log(orderid);\r",
+							"         pm.environment.set(\"bookoid\", orderid);\r",
+							"     }\r",
+							"\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/orders",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\":6,\r\n    \"customerName\":\"krishna\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/orders",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

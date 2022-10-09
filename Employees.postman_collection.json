@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "ef7b5fc4-01db-4416-8c88-548489a9b798",
+		"name": "Employees",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23216226"
+	},
+	"item": [
+		{
+			"name": "Create  Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check args\",() => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.args.fName).to.eql(pm.variables.get('fName'));\r",
+							"        pm.expect(response.args.lName).to.eql(pm.variables.get('lName'));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/post?fName={{fName}}&lName={{lName}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "fName",
+							"value": "{{fName}}"
+						},
+						{
+							"key": "lName",
+							"value": "{{lName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a job Position",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check args\",() => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.args.jobPos).to.eql(pm.variables.get('Position'));\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/post?jobPos={{Position}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "jobPos",
+							"value": "{{Position}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
